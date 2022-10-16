@@ -1,12 +1,36 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app id="app">
+    <v-main>
+      <v-img src="./assets/logo.svg" alt="vue logo" class="app-img"></v-img>
+      <h1>my personal costs</h1>
+      <v-tabs class="nav">
+        <v-tab>
+          <router-link :to="'/'" class="nav-item">main</router-link>
+        </v-tab>
+        <v-tab>
+          <router-link :to="'/statistics'" class="nav-item">statistics</router-link>
+        </v-tab>
+        <v-tab>
+          <router-link :to="'/about'" class="nav-item">about</router-link>
+        </v-tab>
+      </v-tabs>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
+
+<script>
+
+export default {
+  name: 'App',
+
+  data() {
+    return {
+
+    }
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,18 +39,24 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 100%;
+  max-width: 600px;
 }
 
-nav {
-  padding: 30px;
+.app-img {
+  width: 200px;
+  margin: 0 auto;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.nav {
+  display: flex;
+  justify-content: center;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  &-item {
+    text-decoration: none;
   }
 }
 </style>
+
